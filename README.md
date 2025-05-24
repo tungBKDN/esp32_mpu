@@ -55,6 +55,25 @@ The directory works like this:
 - Training an SVM classifier to recognize different activities (e.g., walking, running, stationary)
 - Exporting the trained model for use on the ESP32 or for offline analysis
 
+## Files
+
+### Model Parameters
+The following files are used for the SVM model on the ESP32:
+- `scale.h`          : Contains scaling parameters used to normalize sensor data before inference.
+- `mean.h`           : Stores the mean values of features used for normalization, if required by the preprocessing pipeline.
+- `support_vectors.h`: Stores the support vectors extracted from the trained SVM model.
+- `dual_coef.h`      : Contains the dual coefficients associated with each support vector, used in the SVM decision function.
+- `train_value.h`    : Holds the coefficients and intercepts required for SVM decision making.
+
+These files together enable the ESP32 to perform real-time inference using the trained SVM model, allowing for accurate fall detection based on sensor input.
+The parameters, coefficients, and vectors are generated during the Python training phase and exported for use in the embedded environment.
+
+### Working Files
+- `calculations.h`   : This file contains functions for data extraction.
+- `esp32_mpu.ino`    : The main file for boosting and contain the main pipeline of the ESP32.
+- `oled.ino`         : This file contains functions for controlling the OLED display.
+- `battery_icon.ino` : This file contains functions for showing the right icon toward the current battery life.
+
 ## License
 
 This project is licensed under the MIT License.
