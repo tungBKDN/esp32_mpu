@@ -17,8 +17,6 @@ This repository is to create a IoT device that can detect real-time fall detecti
 - ESP32 development board
 - Sensors/Accessory: MPU6050, Battery, Switch, GPS antenna, SIM kit, Battery voltage measuring circut, Buzzer, OLED Display.
 - Arduino IDE
-- Python 3 (for SVM training and inference scripts)
-- Required Python libraries: `scikit-learn`, `numpy`, `pandas` (for SVM)
 - Libraries to install: `Adafruit_MPU6050`, `Adafruit_Sensor`, `NTPClient`, `ArduinoJson`, `U8g2lib`, and some other library that already came with ESP32 Core and Arduino IDE.
 
 
@@ -45,6 +43,7 @@ With:
 
 
 ## About this Custom SVM
+
 The SVM Model comes with `scale.h`, `support_vectors.h` and `train_value.h` which contain parameters of the SVM. These parameter is previously extracted from the training stage in Python.
 The dimension of the support vectors is: 22 vectors x 54 features.
 
@@ -58,7 +57,8 @@ The directory works like this:
 ## Files
 
 ### Model Parameters
-The following files are used for the SVM model on the ESP32:
+
+The following files are used for the SVM model (that has been trained) on the ESP32:
 - `scale.h`          : Contains scaling parameters used to normalize sensor data before inference.
 - `mean.h`           : Stores the mean values of features used for normalization, if required by the preprocessing pipeline.
 - `support_vectors.h`: Stores the support vectors extracted from the trained SVM model.
