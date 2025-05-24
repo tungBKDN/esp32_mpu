@@ -170,7 +170,6 @@ int svm_predict(const vector<vector<double>>& support_vectors, const vector<doub
         result += dual_coefficients[i] * rbf_kernel(support_vectors[i], features, gamma);
     }
     result += intercept;
-    std::cout << "\nresult value: " << result << '\n';
     return result > 0 ? 1 : -1;
 }
 
